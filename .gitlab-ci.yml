@@ -1,0 +1,37 @@
+image: node:16
+
+stages:
+  - install
+  - test
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - echo "Installing dependencies..."
+    - npm install
+  only:
+    - main
+
+run_tests:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - ng test --watch=false --browsers=ChromeHeadless
+  only:
+    - main
+
+build_application:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - ng build --configuration production
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main
