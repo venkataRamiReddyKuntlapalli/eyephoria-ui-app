@@ -1,0 +1,24 @@
+
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" >
+            <div class="form-group">
+                <label for="email">Email Id : </label>
+                <input type="email" formControlName="email" id="email" name="email" aria-required="true" placeholder=" Please enter your email">    
+            </div>
+            <div class="form-group">
+                <label for="password">Password :  </label>
+                <input type="password" formControlName="password" id="password" aria-required="true" name="password" autocomplete="current-password" placeholder=" Please enter password">
+            </div>
+            <div class="auth-links">
+                <p>
+                    <a class="link" [routerLink]="['auth/forgot-password']">Forgot password?</a>
+                </p>
+                <p>
+                    Dont have account? 
+                    <a class="link" [routerLink]="['auth/signup']">Register</a>
+                </p>
+            </div>
+            <div class="form-btn">
+                <button type="submit" class="cancel-btn">Cancel</button>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>

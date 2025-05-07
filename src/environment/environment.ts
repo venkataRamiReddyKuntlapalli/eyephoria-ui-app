@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    useMock: true
+    useMock: true,
+    baseUrl: "http://localhost:4200"
 }

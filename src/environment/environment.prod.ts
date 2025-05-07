@@ -1,6 +1,7 @@
 export const environment = {
     production: true,
     useMock: false,
+    baseurl: "https://eyephoria-clinic.liveblog365.com"
     /*
     auth0: {
         local: {

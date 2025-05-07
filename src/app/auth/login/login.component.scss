@@ -1,0 +1,147 @@
+$primary-color: #4CAF50;
+$secondary-color: #f4f4f4;
+$error-color: #d32f2f;
+$border-radius: 5px;
+
+.login-form {
+    width: 350px;
+    min-height: 420px; // Ensures sufficient height
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    background: $secondary-color;
+    font-family: "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 15px;
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #aaa;
+            border-radius: $border-radius;
+            transition: border-color 0.3s ease-in-out;
+
+            &:focus {
+                border-color: $primary-color;
+                outline: none;
+                background: #f1f1f1;
+            }
+
+            &:hover {
+                border-color: darken($primary-color, 15%);
+            }
+        }
+    }
+
+    .auth-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+      
+        p {
+          font-size: 16px;
+          color: #333;
+          margin-bottom: 10px;
+        }
+      
+        .link {
+          text-decoration: none;
+          color: #007bff;
+          font-weight: bold;
+          transition: color 0.3s ease;
+      
+          &:hover {
+            color: #0056b3;
+          }
+        }
+      }
+      
+
+    .button-container {
+        display: flex;
+        justify-content: space-between; // Even spacing between buttons
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .form-btn {
+        width: 100%;
+    padding: 12px 0px;
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+
+        width: 100%; // Each button takes up half the width with slight spacing
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .submit-btn {
+        // width: 100%; // Each button takes up half the width with slight spacing
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        text-align: center;
+        background: $primary-color;
+        color: white;
+
+        &:hover {
+            background: darken($primary-color, 10%);
+        }
+
+        &:focus {
+            outline: none;
+            background: darken($primary-color, 15%);
+        }
+    }
+
+    .cancel-btn {
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        text-align: center;
+        background: $error-color;
+        color: white;
+
+        &:hover {
+            background: darken($error-color, 10%);
+        }
+
+        &:focus {
+            outline: none;
+            background: darken($error-color, 15%);
+        }
+    }
+}
