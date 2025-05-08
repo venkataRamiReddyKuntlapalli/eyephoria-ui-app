@@ -5,8 +5,8 @@ import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
     path: "consumers",
-    loadChildren: () => import('./consumers/consumers.module').then(m => m.ConsumersModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./consumers/consumers.module').then(m => m.ConsumersModule)
+    // canActivate: [AuthGuard]
   },
   {
     path: "auth",
@@ -22,7 +22,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -12,10 +12,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/effects/auth.effects';
 import { authReducer } from './auth/store/auth.reducer';
 import { FormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './src/app/auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

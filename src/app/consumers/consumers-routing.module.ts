@@ -5,6 +5,7 @@ import { AppointmentBookingComponent } from './appointment-booking/appointment-b
 import { PaymentBillingComponent } from './payment-billing/payment-billing.component';
 
 const consumerRoutes: Routes = [
+  { path: '', redirectTo: 'account-management', pathMatch: 'full' }, // Default to login
   {
     path: 'account-management',
     component: AccountManagementComponent

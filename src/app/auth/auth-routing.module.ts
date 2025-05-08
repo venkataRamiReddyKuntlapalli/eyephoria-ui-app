@@ -1,20 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { LoginComponent } from "./login/login.component";
+import { SignupComponent } from "./signup/signup.component";
+import { ForgotPasswordComponent } from "../src/app/auth/forgot-password/forgot-password.component";
 
-const authRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default to login
+const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: '**', redirectTo: 'signup' } // Catch-all route inside AuthModule
+  { path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(authRoutes)], // Ensures proper routing within AuthModule
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule {}
-
+export class AuthRoutingModule { }
