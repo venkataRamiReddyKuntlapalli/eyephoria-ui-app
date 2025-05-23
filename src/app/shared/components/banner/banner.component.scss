@@ -1,0 +1,50 @@
+.banner {
+  background: #000 url('/assets/images/banner-bg.png') no-repeat center right;
+  background-size: contain;
+  color: #fff;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+//   min-height: 400px;
+
+  .banner-content {
+    max-width: 600px;
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      span {
+        font-weight: 300;
+        display: block;
+      }
+
+      strong {
+        color: yellow; // yellow highlight
+        font-weight: 700;
+      }
+    }
+
+    p {
+      margin: 1rem 0 2rem;
+      font-size: 1.125rem;
+      color: #ccc;
+    }
+
+    .banner-button {
+      background: yellow;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #e6c200;
+      }
+    }
+  }
+}

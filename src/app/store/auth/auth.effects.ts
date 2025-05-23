@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-// import { login, loginSuccess, loginFailure, signUp, signUpSuccess, signUpFailure, refreshToken, refreshTokenSuccess, refreshTokenFailure } from './auth.actions';
+import { signUp, signUpSuccess, signUpFailure } from 'src/app/store/user/actions/user.actions';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { AuthService } from '../../auth.service';
-import { login, loginSuccess, loginFailure, signUp, signUpSuccess, signUpFailure } from 'src/app/store/user/actions/user.actions';
+import { AuthService } from 'src/app/auth/auth.service';
+import { login, loginFailure, loginSuccess } from './actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {

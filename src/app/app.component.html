@@ -1,6 +1,6 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-footer></app-footer> -->
 <!-- <lable> -->
     <!-- <div> -->
     <!-- <input type="radio" name="options" [(ngModel)]="selectedValue" value="option 1"> option 1 -->
@@ -10,3 +10,13 @@
     <!-- </lable> -->
     <!-- </div>
     <div>{{selectedValue}}</div> -->
+
+    <header>
+     <div class="container">
+        <app-header> {{cartCount}}</app-header>
+      </div>
+    </header>
+    
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>

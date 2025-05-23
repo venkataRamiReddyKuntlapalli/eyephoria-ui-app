@@ -8,6 +8,10 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  getGoogleUser(credential: any) {
+    return JSON.parse(atob(credential.split('.')[1]));
+    
+  }
 
   private baseUrl: string = environment.baseUrl;
   constructor(private http: HttpClient
@@ -16,7 +20,8 @@ export class AuthService {
     }
 
   login(credentials: {email: string, password: string}):  Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials)
+    if(!environment.useMock) {
+      return this.http.post(`${this.baseUrl}/login`, credentials)
       .pipe(
         catchError( error => {
           console.log('Login Failed:', error);
@@ -24,6 +29,9 @@ export class AuthService {
           
         })
       )
+    } else {
+      return this.http.get('assets/mock/auth/login.json')
+    }
     // .subscribe((response: any) => {
     //   const token = response.accessToken; // Assume Auth0 response includes the access token
     //   this.cookieService.set('auth-token', token, {

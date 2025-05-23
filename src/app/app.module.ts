@@ -7,25 +7,26 @@ import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/user/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './auth/store/effects/auth.effects';
-import { authReducer } from './auth/store/auth.reducer';
 import { FormsModule } from '@angular/forms';
-import { ForgotPasswordComponent } from './src/app/auth/forgot-password/forgot-password.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { cartReducer } from './store/cart/cart.reducer';
+import { RouterModule } from '@angular/router';
+import { authReducer } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ForgotPasswordComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ user: userReducer }),
-    StoreModule.forRoot({ auth: authReducer }),
+    StoreModule.forRoot({ auth: authReducer, cart: cartReducer }),
     EffectsModule.forRoot([AuthEffects]),
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
+    FontAwesomeModule,
     SharedModule,
     FormsModule
   ],

@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMyIsIm5hbWUiOiJKb2huIERvZSIsInJvbGUiOiJhZG1pbiJ9.signature",
+  "user": {
+    "id": "123",
+    "name": "John Doe",
+    "role": "admin",
+    "email": "john.doe@example.com"
+  }
+}

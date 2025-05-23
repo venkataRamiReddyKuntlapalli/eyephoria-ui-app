@@ -4,6 +4,10 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
+    path: "dashboard",
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
     path: "consumers",
     loadChildren: () => import('./consumers/consumers.module').then(m => m.ConsumersModule)
     // canActivate: [AuthGuard]
@@ -12,9 +16,13 @@ const routes: Routes = [
     path: "auth",
     loadChildren: () => import('./auth/auth.module').then((m)=> m.AuthModule  )
   },
+  { 
+    path: 'products', 
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) 
+  },
   {
     path: "**",
-    redirectTo: 'consumers',   // Catch all undefined paths
+    redirectTo: 'dashboard',   // Catch all undefined paths
     pathMatch:"full"
   }
   //   Default Module to be for home screen

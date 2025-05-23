@@ -1,22 +1,34 @@
 import { Component } from '@angular/core';
-import { refreshToken } from './store/user/actions/user.actions';
 import { Store } from '@ngrx/store';
+import { Product } from './shared/models/product';
+import { refreshToken } from './store/auth/actions/auth.actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 export class AppComponent {
   title = 'eyephoria-ui-app';
-selectedValue: any;
+  selectedValue: any;
   empData!: Array<EmployeeData>;
-  constructor(private store: Store) {}
+
+  role: any = "admin";
+  cart: any[] = [];
+  cartCount!: number;
+  
+  constructor( private store: Store<{ cart: Product[] }>) {}
   ngOnInit() {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       this.store.dispatch(refreshToken({ token: storedToken })); // Refresh session
     }
+    this.store.select('cart').subscribe(cart => {
+      console.log(" Cart data :", cart)
+      this.cartCount = cart.length; // Update cart count dynamically
+    });
+    
     this.empData = [
       {
         id: 1,

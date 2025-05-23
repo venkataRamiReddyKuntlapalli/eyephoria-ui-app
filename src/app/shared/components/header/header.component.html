@@ -1,1 +1,73 @@
-<p>header works!</p>
+<div class="nav-header">
+    <div class="nav-belt">
+        <div class="menu-icon" *ngIf="!isMenuOpen" (click)="toggleMenu()">
+            <fa-icon [icon]="faBars"></fa-icon>
+        </div>
+        <div class="menu-overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+        <div class="menu-list" [class.open]="isMenuOpen">
+            <div class="close-icon" *ngIf="isMenuOpen" (click)="closeMenu()">
+                <fa-icon [icon]="faTimes"></fa-icon>
+            </div>
+            <div class="menu-item">
+                <a [routerLink]="['/products']" (click)="closeMenu()">Products</a>
+            </div>
+            <div class="menu-item">
+                <a [routerLink]="['/about']" (click)="closeMenu()">About Us</a>
+            </div>
+            <div class="menu-item">
+                <a [routerLink]="['/contact']" (click)="closeMenu()">Contact Us</a>
+            </div>
+        </div>
+        <div class="header-left">
+            <a class="header-logo" [routerLink]="['/dashboard']">
+                <img src="assets/logo.png" alt="Eyephoria Logo" />
+            </a>
+        </div>
+        <div class="header-fill">
+            <div class="header-search">
+                <div class="search-input-wrapper">
+                    <input type="text" placeholder="Search Eyephoria"/>
+                    <button class="search-btn" type="button" (click)="onSearch()">
+                        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav-left">
+            <ng-container *ngIf="isLoggedIn; else getStartTemplate">
+                <div class="user-name">
+                    <p><a class="link" [routerLink]="['/user/profile']">Welcome {{ user?.name }}</a></p>
+                </div>
+                <div class="log-out">
+                    <p><a class="link" (click)="sharedService.logout()">Logout</a></p>
+                </div>
+            </ng-container>
+
+            <ng-template #getStartTemplate>
+                <div class="auth-links" (mouseover)="showAuthLinks = true" (mouseleave)="showAuthLinks = false">
+                    Get Started
+                    <div class="auth-dropdown">
+                        <p><a class="link" [routerLink]="['/auth/login']">Login</a></p>
+                        <p>Don't have an account? <a class="link" [routerLink]="['/auth/signup']">Register</a></p>
+                    </div>
+                </div>
+            </ng-template>
+
+            <div class="header-cart">
+                <a [routerLink]="['/cart']">
+                    <fa-icon [icon]="faShoppingCart"></fa-icon>
+                    <span class="cart-count">{{ cartItemCount }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="nav-menu">
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/sunglasses']">SunGlasses</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/contact-lenses']">Lensses</a>
+        </div>
+
+    </div>
+</div>

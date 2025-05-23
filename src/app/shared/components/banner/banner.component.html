@@ -1,0 +1,10 @@
+<section class="banner">
+    <div class="banner-content">
+        <h1 class="banner-title">{{ title }}</h1>
+        <p class="banner-description">{{ description }}</p>
+        <ng-container *ngIf="buttonText && buttonUrl">
+            <button [routerLink]="buttonUrl" class="banner-button">{{ buttonText }}</button>
+        </ng-container>
+
+    </div>
+</section>
