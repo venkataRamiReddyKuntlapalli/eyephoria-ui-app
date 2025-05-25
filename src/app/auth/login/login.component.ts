@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   isLoading: boolean = false;
   constructor(private router: Router, private formBuilder: FormBuilder, private authservice: AuthService
     , private store: Store, private ngZone: NgZone
-  ) {}
+  ) { }
   ngOnInit(): void {
 
     // https://developers.google.com/identity/gsi/web/reference/js-reference 
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       }
     })
 
+    // Render the Google Sign-In button
     google.accounts.id.renderButton(document.getElementById("google-btn"), {
       theme: 'filled_blue',
       size: 'large',
@@ -41,13 +42,14 @@ export class LoginComponent implements OnInit {
       width: 350
     })
 
-    
+    // reactive form validation
     this.loginForm = this.formBuilder.group({
-      email: ['', [ Validators.required, Validators.email]],
-      password: ['', [ Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
 
+  // function to handle Google login
   handleGoogleLogin(response: any) {
     if (response?.credential) {
       const userData = this.authservice.getGoogleUser(response.credential);
@@ -64,45 +66,52 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // on click of login button from login form
   onLoginSubmit() {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       console.log("login form valid")
       const credentials = this.loginForm.value;
-       this.store.dispatch(login({ credentials }));
+      this.store.dispatch(login({ credentials }));
       this.authservice.login(this.loginForm.value).subscribe((response) => {
-        if(response.status == "SUCCESS") {
-         // this.store.select(state => state.auth.token).subscribe(token => {
+        if (response.status == "SUCCESS") {
+          // this.store.select(state => state.auth.token).subscribe(token => {
           //   if (token) {
           //     localStorage.setItem("token", response.token);
           //   }
           // })
           // Extract user role
-        const userRole = response.user.role; // Assuming response contains role
+          const userRole = response.user.role; // Assuming response contains role
 
-        // Dispatch login action with user details
-        this.store.dispatch(login({ credentials: { email: credentials.email, password: credentials.password } }));
-        
-        // Store role in local storage (or use NgRx for global state)
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("role", userRole);
+          // Dispatch login action with user details
+          this.store.dispatch(login({ credentials: { email: credentials.email, password: credentials.password } }));
 
-        // Navigate based on role
-        switch (userRole) {
-          case 'admin':
-            this.router.navigate(['/admin-dashboard']);
-            break;
-          case 'doctor':
-            this.router.navigate(['/doctor-dashboard']);
-            break;
-          case 'patient':
-            this.router.navigate(['/appointment-booking']);
-            break;
-          default:
-            this.router.navigate(['/auth/login']); // Redirect to login if role is unknown
-        }
+          // Store role in local storage (or use NgRx for global state)
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("role", userRole);
+
+          // Navigate based on role
+          switch (userRole) {
+            case 'admin':
+              this.router.navigate(['/admin-dashboard']);
+              break;
+            case 'doctor':
+              this.router.navigate(['/doctor-dashboard']);
+              break;
+            case 'patient':
+              this.router.navigate(['/appointment-booking']);
+              break;
+            default:
+              this.router.navigate(['/auth/login']); // Redirect to login if role is unknown
+          }
         }
       })
     }
+  }
+
+  // on click of cancel button from login form 
+  resetLoginForm() {
+    this.loginForm.reset();
+    this.isLoading = false;
   }
 
 }

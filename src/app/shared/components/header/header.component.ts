@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   faMagnifyingGlass = faMagnifyingGlass;
   faBars = faBars;
   faTimes = faTimes;
-  showAuthLinks: boolean = false;
   isLoggedIn: boolean = false;
   user: UserState["user"] = {
     id: '',
@@ -39,9 +38,6 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = user? true : false;
       
       console.log("user at header comp: ", this.user, " user is logged in: ", this.isLoggedIn);
-      this.showAuthLinks = !this.isLoggedIn;  
-      console.log("isLoggedIn: ", this.isLoggedIn);
-      console.log("showAuthLinks: ", this.showAuthLinks);
     });
 
     this.store.select('cart').subscribe(cartItems => {
@@ -55,8 +51,8 @@ export class HeaderComponent implements OnInit {
     console.log("user at header comp: ", this.user);
   });
   this.store.select(selectIsLoggedIn).subscribe(isLoggedIn => {
+    console.log("isLoggedIn at from selector: ", isLoggedIn);
     this.isLoggedIn = isLoggedIn;
-    this.showAuthLinks = !isLoggedIn;
   });
   }
 

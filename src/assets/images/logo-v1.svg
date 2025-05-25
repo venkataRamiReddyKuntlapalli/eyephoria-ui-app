@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Eyebrows -->
+  <path d="M250 280 Q400 220 550 280" stroke="black" stroke-width="30" stroke-linecap="round"/>
+  
+  <!-- Glasses Frame -->
+  <path d="M150 400 H650" stroke="black" stroke-width="25"/>
+  <path d="M250 400 V450 Q400 500 550 450 V400" stroke="black" stroke-width="25" fill="none"/>
+  
+  <!-- Left Lens -->
+  <circle cx="300" cy="400" r="80" stroke="black" stroke-width="25" fill="white"/>
+  <circle cx="300" cy="400" r="40" fill="#FF6B00"/>
+  
+  <!-- Right Lens -->
+  <circle cx="500" cy="400" r="80" stroke="black" stroke-width="25" fill="white"/>
+  <circle cx="500" cy="400" r="40" fill="#FF6B00"/>
+  
+  <!-- Bridge Support -->
+  <path d="M380 400 H420" stroke="black" stroke-width="25"/>
+  
+  <!-- Temple Arms -->
+  <path d="M150 400 L100 380" stroke="black" stroke-width="25" stroke-linecap="round"/>
+  <path d="M650 400 L700 380" stroke="black" stroke-width="25" stroke-linecap="round"/>
+</svg>

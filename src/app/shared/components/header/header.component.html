@@ -1,6 +1,6 @@
 <div class="nav-header">
     <div class="nav-belt">
-        <div class="menu-icon" *ngIf="!isMenuOpen" (click)="toggleMenu()">
+        <div class="menu-icon" [ngClass]="!isMenuOpen ? 'active' : 'disabled'" (click)="toggleMenu()">
             <fa-icon [icon]="faBars"></fa-icon>
         </div>
         <div class="menu-overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
@@ -8,6 +8,7 @@
             <div class="close-icon" *ngIf="isMenuOpen" (click)="closeMenu()">
                 <fa-icon [icon]="faTimes"></fa-icon>
             </div>
+
             <div class="menu-item">
                 <a [routerLink]="['/products']" (click)="closeMenu()">Products</a>
             </div>
@@ -20,13 +21,17 @@
         </div>
         <div class="header-left">
             <a class="header-logo" [routerLink]="['/dashboard']">
-                <img src="assets/logo.png" alt="Eyephoria Logo" />
+                <img src="../../../../assets/images/eyephoria-logo.svg" alt="Eyephoria Logo" />
+                <div class="logo-text">
+                    <p class="logo-head-text">Eyephoria</p>
+                    <p class="logo-sub-text">CLINIC & OPTICALS</p>
+                </div>
             </a>
         </div>
         <div class="header-fill">
             <div class="header-search">
                 <div class="search-input-wrapper">
-                    <input type="text" placeholder="Search Eyephoria"/>
+                    <input type="text" placeholder="Search Eyephoria" />
                     <button class="search-btn" type="button" (click)="onSearch()">
                         <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
                     </button>
@@ -34,7 +39,7 @@
             </div>
         </div>
         <div class="header-nav-left">
-            <ng-container *ngIf="isLoggedIn; else getStartTemplate">
+            <ng-container *ngIf="isLoggedIn">
                 <div class="user-name">
                     <p><a class="link" [routerLink]="['/user/profile']">Welcome {{ user?.name }}</a></p>
                 </div>
@@ -42,16 +47,15 @@
                     <p><a class="link" (click)="sharedService.logout()">Logout</a></p>
                 </div>
             </ng-container>
-
-            <ng-template #getStartTemplate>
-                <div class="auth-links" (mouseover)="showAuthLinks = true" (mouseleave)="showAuthLinks = false">
-                    Get Started
+            <ng-container *ngIf="!isLoggedIn">
+                <div class="auth-links">
+                    <a class="link" [routerLink]="['/auth/login']">Get Started</a>
                     <div class="auth-dropdown">
                         <p><a class="link" [routerLink]="['/auth/login']">Login</a></p>
                         <p>Don't have an account? <a class="link" [routerLink]="['/auth/signup']">Register</a></p>
                     </div>
                 </div>
-            </ng-template>
+            </ng-container>
 
             <div class="header-cart">
                 <a [routerLink]="['/cart']">
@@ -61,12 +65,28 @@
             </div>
         </div>
     </div>
+
     <div class="nav-menu">
         <div class="nav-menu-item">
             <a [routerLink]="['/products/sunglasses']">SunGlasses</a>
         </div>
         <div class="nav-menu-item">
             <a [routerLink]="['/products/contact-lenses']">Lensses</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/eyeglasses']">EyeGlasses</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/eye-care']">Eye Care</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/kids-glasses']">Kids Glasses</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/screen-glasses']">Screen Glasses</a>
+        </div>
+        <div class="nav-menu-item">
+            <a [routerLink]="['/products/home-eye-test']">Home Eye Test</a>
         </div>
 
     </div>

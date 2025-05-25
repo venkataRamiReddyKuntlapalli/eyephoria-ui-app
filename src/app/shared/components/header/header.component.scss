@@ -13,20 +13,27 @@
         justify-content: space-around;
         align-items: center;
         width: 100%;
-        height: max-content;
+        height: fit-content;
         padding: 10px 20px;
         position: relative;
         z-index: 100;
         transition: background-color 0.3s;
-        background-color: black;
-        color: white;
+        background-color: #fff;
+        color: black;
+        border-bottom: 1px solid #cbcdce;
 
         .menu-icon {
             cursor: pointer;
             font-size: 1.5rem;
-            color: yellow;
+            color: orange;
             margin-right: 16px;
-            z-index: 1201;
+
+            .active {
+                display: block;
+            }
+            .disabled {
+                display: none;
+            }
         }
 
         .menu-list {
@@ -61,12 +68,12 @@
                 justify-content: flex-end;
                 width: 100%;
                 font-size: 2rem;
-                color: yellow;
+                color: orange;
                 cursor: pointer;
                 margin-bottom: 16px;
                 padding-right: 8px;
                 :hover {
-                    border: yellow 1px solid;
+                    border: orange 1px solid;
                     border-radius: 2px;
                 }
             }
@@ -74,10 +81,17 @@
 
         .menu-list.open {
             display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 240px;
         }
 
         .header-logo {
-
+             display: flex;
+            flex-direction: row;
+            align-items: center;
             img {
                 width: 50px;
                 height: 50px;
@@ -87,6 +101,21 @@
 
                 &:hover {
                     transform: scale(1.05);
+                }
+            }
+
+            .logo-text {
+                font-size: 24px;
+                color: #1976d2;
+                .logo-head-text {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #2b2929;
+                }
+                .logo-sub-text {
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #646161;
                 }
             }
         }
@@ -101,7 +130,7 @@
             transition: color 0.3s;
 
             a {
-                color: white;
+                color: black;
                 text-decoration: none;
             }
 
@@ -110,18 +139,14 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: white;
                     border-radius: 5px;
-                    padding: 5px;
                     width: 250px;
+                    border: 1px solid #cbcdce;
 
                     input {
                         border: none;
-                        outline: none;
                         padding: 5px;
                         font-size: 16px;
-                        width: 100%;
-                        border-radius: 5px;
 
                         &::placeholder {
                             color: #aaa;
@@ -142,7 +167,7 @@
             transition: color 0.3s;
 
             a {
-                color: white;
+                color: black;
                 text-decoration: none;
             }
 
@@ -150,7 +175,7 @@
                 position: relative;
                 cursor: pointer;
                 display: flex;
-                color: yellow;
+                color: orange;
                 padding: 3px;
                 height: 26px;
                 font-weight: normal;
@@ -160,7 +185,7 @@
             }
 
             .auth-links:hover {
-                border: yellow 1px solid;
+                border: orange 1px solid;
                 border-radius: 2px;
 
                 .auth-dropdown {
@@ -174,7 +199,7 @@
                 position: absolute;
                 top: 40px;
                 left: calc(50% - 75px);
-                background-color: white;
+                background-color: #fff;
                 color: black;
                 border-radius: 5px;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -197,7 +222,7 @@
                     height: 0;
                     border-left: 10px solid transparent;
                     border-right: 10px solid transparent;
-                    border-bottom: 10px solid white;
+                    border-bottom: 10px solid black;
                     /* Same color as dropdown */
                 }
 
@@ -207,7 +232,7 @@
                     display: block;
 
                     &:hover {
-                        background-color: yellow;
+                        background-color: orange;
                     }
                 }
             }
@@ -242,7 +267,7 @@
                 top: -5px;
                 right: -10px;
                 background-color: red;
-                color: white;
+                color: black;
                 border-radius: 50%;
                 padding: 2px 6px;
                 font-size: 12px;
@@ -258,20 +283,21 @@
         gap: 20px;
         font-size: 18px;
         font-weight: bold;
-        background-color: black;
+        background-color: #fff;
         width: 100%;
         padding: 10px 30px;
         transition: background-color 0.3s;
+        border-bottom: 1px solid #cbcdce;
 
         a {
-            color: white;
+            color: black;
             text-decoration: none;
             transition: color 0.3s;
 
             padding: 5px;
 
             &:hover {
-                border: white 1px solid;
+                border: black 1px solid;
                 border-radius: 3px;
 
 
@@ -355,24 +381,4 @@
 // Optional: overlay for mobile menu
 .menu-overlay {
     display: none;
-}
-
-@media (max-width: 900px) {
-    .menu-overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.35);
-        z-index: 1199;
-        opacity: 1;
-        transition: opacity 0.3s;
-    }
-
-    .menu-overlay.hide {
-        display: none;
-        opacity: 0;
-    }
 }
